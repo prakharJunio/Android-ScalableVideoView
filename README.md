@@ -1,41 +1,49 @@
 # Android-ScalableVideoView
+
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ScalableVideoView-green.svg?style=flat)](https://android-arsenal.com/details/1/2045)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/yqritc/maven/android-scalablevideoview/images/download.svg)](https://bintray.com/yqritc/maven/android-scalablevideoview/_latestVersion)
 
-*__Looking for the extra scale types of ImageView? [Check out ScalableImageView.](https://github.com/yqritc/Android-ScalableImageView)__*  
+_**Looking for the extra scale types of ImageView? [Check out ScalableImageView.](https://github.com/yqritc/Android-ScalableImageView)**_
 
 Android Texture VideoView having a variety of scale types like the scale types of ImageView.
 
 ![Sample](/sample/sample.gif)
 
 # Sample
+
 <a href="https://play.google.com/store/apps/details?id=com.yqritc.scalablevideoview.sample"><img src="http://developer.android.com/images/brand/en_app_rgb_wo_60.png"/></a>
 
 # Release Note
 
-[Release Note] (https://github.com/yqritc/Android-ScalableVideoView/releases)
+[Release Note](https://github.com/yqritc/Android-ScalableVideoView/releases)
 
 # Gradle
+
 ```
-repositories {
-    jcenter()
-}
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
 
 dependencies {
-    compile 'com.yqritc:android-scalablevideoview:1.0.4'
-}
+  	        implementation 'com.github.thang2162:Android-ScalableVideoView:Tag'
+  }
 ```
 
-# Support Scale Types  
+# Support Scale Types
 
-### Scale to fit 
+### Scale to fit
+
 - fitXY
 - fitStart
 - fitCenter
 - fitEnd
 
 ### No Scale
+
 - leftTop
 - leftCenter
 - leftBottom
@@ -47,6 +55,7 @@ dependencies {
 - rightBottom
 
 ### Crop
+
 - leftTopCrop
 - leftCenterCrop
 - leftBottomCrop
@@ -58,14 +67,15 @@ dependencies {
 - rightBottomCrop
 
 ### Scale Inside
+
 - startInside
 - centerInside
 - endInside
 
-
 # Usage
 
 ### Set scale type in layout file
+
 ```
 <com.yqritc.scalablevideoview.ScalableVideoView
   android:id="@+id/video_view"
@@ -74,16 +84,18 @@ dependencies {
   android:layout_marginBottom="100dp"
   app:scalableType="fitCenter"/>
 ```
+
 Please refere the following xml for the list of scalableType you can set.  
 [attrs.xml](https://github.com/yqritc/Android-ScalableVideoView/blob/master/library/src/main/res/values/attrs.xml)
 
 ### Sample usage in source code
+
 ```
 @Override
 protected void onCreate(Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
   setContentView(R.layout.activity_main);
-  
+
   mVideoView = (ScalableVideoView) findViewById(R.id.video_view);
   try {
     mVideoView.setRawData(R.raw.landscape_sample);
@@ -107,12 +119,13 @@ public void onClick(View v) {
   }
 }
 ```
+
 [ScalableVideoView](https://github.com/yqritc/Android-ScalableVideoView/blob/master/library/src/main/java/com/yqritc/scalablevideoview/ScalableVideoView.java) is extending TextureView to play video by using MediaPlayer.  
 Basic functionalities are defined in this class to play and scale video.  
-If you need to control more, extend this class and define your custom video view.  
-
+If you need to control more, extend this class and define your custom video view.
 
 # License
+
 ```
 Copyright 2015 yqritc
 
@@ -127,3 +140,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+```

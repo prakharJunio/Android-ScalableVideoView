@@ -37,4 +37,4 @@ android.libraryVariants.all { variant ->
 }
 
 apply from: 'android-artifacts.gradle'
-apply from: 'bintray-publish.gradle'
+// apply from: 'bintray-publish.gradle'

@@ -1,5 +1,5 @@
 apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
+// apply plugin: 'com.jfrog.bintray'
 
 publishing {
     publications {
@@ -39,7 +39,7 @@ publishing {
         }
     }
 }
-
+/*
 def getBintrayUserProperty() {
     return hasProperty('bintrayUser') ? bintrayUser : ""
 }
@@ -67,3 +67,4 @@ bintray {
         }
     }
 }
+*/

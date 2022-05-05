@@ -29,7 +29,7 @@ allprojects {
 	}
 
 dependencies {
-  	        implementation 'com.github.thang2162:Android-ScalableVideoView:v1.1.1'
+  	  implementation 'com.github.thang2162:Android-ScalableVideoView:v1.1.1'
   }
 ```
 

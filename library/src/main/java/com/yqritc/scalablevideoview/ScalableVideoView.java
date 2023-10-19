@@ -8,9 +8,11 @@ import android.graphics.Matrix;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RawRes;
+
 import android.util.AttributeSet;
 import android.view.Surface;
 import android.view.TextureView;
@@ -26,6 +28,7 @@ public class ScalableVideoView extends TextureView implements TextureView.Surfac
         MediaPlayer.OnVideoSizeChangedListener {
 
     protected MediaPlayer mMediaPlayer;
+    protected boolean isDisableResetOnDetach = false;
     protected ScalableType mScalableType = ScalableType.NONE;
 
     public ScalableVideoView(Context context) {
@@ -77,7 +80,7 @@ public class ScalableVideoView extends TextureView implements TextureView.Surfac
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (mMediaPlayer == null) {
+        if (mMediaPlayer == null || isDisableResetOnDetach) {
             return;
         }
 
@@ -121,6 +124,10 @@ public class ScalableVideoView extends TextureView implements TextureView.Surfac
         setDataSource(afd);
     }
 
+    public void disableResetOnDetach() {
+        isDisableResetOnDetach = true;
+    }
+
     public void setAssetData(@NonNull String assetName) throws IOException {
         AssetManager manager = getContext().getAssets();
         AssetFileDescriptor afd = manager.openFd(assetName);
@@ -138,7 +145,7 @@ public class ScalableVideoView extends TextureView implements TextureView.Surfac
     }
 
     public void setDataSource(@NonNull Context context, @NonNull Uri uri,
-            @Nullable Map<String, String> headers) throws IOException {
+                              @Nullable Map<String, String> headers) throws IOException {
         initializeMediaPlayer();
         mMediaPlayer.setDataSource(context, uri, headers);
     }
